@@ -14,18 +14,18 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t suresh394/kubernetes .'
+                    sh 'docker build -t javeed/kubernetes .'
                 }
             }
         }
         stage('Push image to hub'){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u suresh394 -p ${dockerhubpwd}'
+                    withCredentials([string(credentialsId: 'dockerpwd', variable: '')]) {
+                    sh 'docker login -u javeed1111 -p ${dockerpwd}'
                         
                     }
-                    sh 'docker push suresh394/kubernetes'
+                    sh 'docker push javeed1/kubernetes'
                 }
             }
         }
@@ -38,4 +38,4 @@ pipeline {
         }
     
     }    
-}
+} 
